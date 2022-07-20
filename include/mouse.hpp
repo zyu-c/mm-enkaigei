@@ -29,6 +29,8 @@ class Mouse {
     float yaw_ang_zero;
     float yaw_ang;
     float motor_vel[2];
+    uint16_t enc_pos_prev[2];
+
     Buzzer* buzzer;
     Encoder* encoder;
     Gyro* gyro;
