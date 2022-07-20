@@ -79,6 +79,7 @@ void Mouse::initClock() {
 void Mouse::initPeripheral() {
     buzzer = Buzzer::getInstance();
     buzzer->init();
+    buzzer->setFreq(3000);
 
     encoder = Encoder::getInstance();
     encoder->init();
@@ -88,12 +89,16 @@ void Mouse::initPeripheral() {
 
     ioex = Ioex::getInstance();
     ioex->init();
+    ioex->set(0x00);
 
     motor = Motor::getInstance();
     motor->init();
+    motor->setDuty(0, 0.0);
+    motor->setDuty(1, 0.0);
 
     sensor = Sensor::getInstance();
     sensor->init();
+    sensor->ledOff();
 }
 
 void Mouse::initControllerTimer() {
