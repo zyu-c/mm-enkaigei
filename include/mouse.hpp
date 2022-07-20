@@ -41,6 +41,8 @@ class Mouse {
 
     void control();
 
+    void calibrateGyro();
+
     void startControllerTimer();
     void stopControllerTimer();
 };

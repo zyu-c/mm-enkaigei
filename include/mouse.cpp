@@ -141,6 +141,15 @@ void Mouse::initVariable() {
     motor_vel[1] = 0.0;
 }
 
+void Mouse::calibrateGyro() {
+    float tmp = 0.0;
+    for (int i = 0; i < 1000; i++) {
+        gyro->update();
+        tmp = tmp + (float)(gyro->getZAngVel());
+    }
+    yaw_ang_zero = ((float)tmp / 1000.0);
+}
+
 void Mouse::startControllerTimer() {
     CMT1.CMCNT = 0;
     CMT.CMSTR0.BIT.STR1 = 1;
