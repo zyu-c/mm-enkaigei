@@ -134,6 +134,13 @@ void Mouse::checkBattery() {
     }
 }
 
+void Mouse::initVariable() {
+    yaw_ang_zero = 0.0;
+    yaw_ang = 0.0;
+    motor_vel[0] = 0.0;
+    motor_vel[1] = 0.0;
+}
+
 void Mouse::startControllerTimer() {
     CMT1.CMCNT = 0;
     CMT.CMSTR0.BIT.STR1 = 1;

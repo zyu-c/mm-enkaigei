@@ -23,6 +23,11 @@ class Mouse {
     void initControllerTimer();
     void checkBattery();
 
+    void initVariable();
+    float yaw_ang_zero;
+    float yaw_ang;
+    float motor_vel[2];
+
    public:
     Buzzer* buzzer;
     Encoder* encoder;
