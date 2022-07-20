@@ -22,6 +22,7 @@ void Mouse::init() {
     initPeripheral();
     initDelayTimer();
     initControllerTimer();
+    initVariable();
 
     checkBattery();
 
@@ -145,7 +146,7 @@ void Mouse::calibrateGyro() {
     float tmp = 0.0;
     for (int i = 0; i < 1000; i++) {
         gyro->update();
-        tmp = tmp + (float)(gyro->getZAngVel());
+        tmp = (float)tmp + (float)(gyro->getZAngVel());
     }
     yaw_ang_zero = ((float)tmp / 1000.0);
 }

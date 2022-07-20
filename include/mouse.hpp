@@ -24,11 +24,11 @@ class Mouse {
     void checkBattery();
 
     void initVariable();
+
+   public:
     float yaw_ang_zero;
     float yaw_ang;
     float motor_vel[2];
-
-   public:
     Buzzer* buzzer;
     Encoder* encoder;
     Gyro* gyro;

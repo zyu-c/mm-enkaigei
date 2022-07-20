@@ -8,4 +8,7 @@ void Mouse::control() {
     encoder->update();
     gyro->update();
     ioex->update();
+
+    yaw_ang = (float)yaw_ang +
+              ((float)(gyro->getZAngVel()) - (float)yaw_ang_zero) / 1000.0;
 }
