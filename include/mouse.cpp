@@ -41,6 +41,9 @@ void Mouse::init() {
     buzzer->off();
     ioex->set(0x00);
     ioex->update();
+
+    motor_vel_target[0] = 0.0;
+    motor_vel_target[1] = 0.0;
 }
 
 void Mouse::initClock() {
@@ -141,10 +144,24 @@ void Mouse::checkBattery() {
 }
 
 void Mouse::initVariable() {
-    yaw_ang_zero = 0.0;
     yaw_ang = 0.0;
-    motor_vel[0] = 0.0;
-    motor_vel[1] = 0.0;
+
+    encoder->update();
+    enc_pos_prev[0] = encoder->getPosition(0);
+    enc_pos_prev[1] = encoder->getPosition(1);
+
+    for (int i = 0; i < 2; i++) {
+        motor_vel[i] = 0.0;
+        output_duty[i] = 0.0;
+        error[i] = 0.0;
+        m[i] = 0.0;
+        error_int[i] = 0.0;
+        error_diff[i] = 0.0;
+    }
+
+    kp = 0.000002;
+    ki = 0.0001;
+    kd = 0.0;
 }
 
 void Mouse::calibrateGyro() {
@@ -157,6 +174,7 @@ void Mouse::calibrateGyro() {
 }
 
 void Mouse::startControllerTimer() {
+    initVariable();
     CMT1.CMCNT = 0;
     CMT.CMSTR0.BIT.STR1 = 1;
 }

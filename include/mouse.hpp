@@ -30,6 +30,15 @@ class Mouse {
     float yaw_ang;
     float motor_vel[2];
     uint16_t enc_pos_prev[2];
+    float machine_vel;
+
+    float motor_vel_target[2];
+    float output_duty[2];
+    float kp, ki, kd;
+    float error[2];
+    float m[2];
+    float error_int[2];
+    float error_diff[2];
 
     Buzzer* buzzer;
     Encoder* encoder;
