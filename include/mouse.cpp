@@ -42,8 +42,8 @@ void Mouse::init() {
     ioex->set(0x00);
     ioex->update();
 
-    motor_vel_target[0] = 0.0;
-    motor_vel_target[1] = 0.0;
+    machine_vel_target = 0.0;
+    machine_omega_target = 0.0;
 }
 
 void Mouse::initClock() {

@@ -31,6 +31,10 @@ void Mouse::control() {
 
     machine_vel = (motor_vel[0] + motor_vel[1]) / 2.0;
 
+    // 逆運動学
+    motor_vel_target[0] = machine_vel_target - 18.5 * machine_omega_target;
+    motor_vel_target[1] = machine_vel_target + 18.5 * machine_omega_target;
+
     // 速度型PID
     for (int i = 0; i < 2; i++) {
         error_diff[i] =

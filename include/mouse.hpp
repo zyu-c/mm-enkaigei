@@ -32,6 +32,8 @@ class Mouse {
     uint16_t enc_pos_prev[2];
     float machine_vel;
 
+    float machine_vel_target;
+    float machine_omega_target;
     float motor_vel_target[2];
     float output_duty[2];
     float kp, ki, kd;

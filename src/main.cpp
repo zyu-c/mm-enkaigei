@@ -16,8 +16,7 @@ int main() {
 
     mouse->calibrateGyro();
 
-    mouse->motor_vel_target[0] = 0.0;
-    mouse->motor_vel_target[1] = 0.0;
+    mouse->machine_vel_target = 10.0;
 
     mouse->startControllerTimer();
 
