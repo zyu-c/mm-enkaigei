@@ -47,6 +47,8 @@ void Mouse::init() {
 
     pid_motor[0].setParam(0.000002, 0.0001, 0.0, 0.8, -0.8, 1000.0);
     pid_motor[1].setParam(0.000002, 0.0001, 0.0, 0.8, -0.8, 1000.0);
+    pid_ang.setParam(5.0, 0.0, 0.0, 5.0, -5.0, 1000.0);
+    machine_theta_target = 0.0;
 }
 
 void Mouse::initClock() {

@@ -8,6 +8,7 @@
 #include "gyro.hpp"
 #include "ioex.hpp"
 #include "motor.hpp"
+#include "pid_position_controller.hpp"
 #include "pid_speed_controller.hpp"
 #include "sensor.hpp"
 
@@ -27,6 +28,7 @@ class Mouse {
     void initVariable();
 
     PidSpeedController pid_motor[2];
+    PidPositionController pid_ang;
 
    public:
     float yaw_ang_zero;
@@ -35,6 +37,7 @@ class Mouse {
     uint16_t enc_pos_prev[2];
     float machine_vel;
 
+    float machine_theta_target;
     float machine_vel_target;
     float machine_omega_target;
     float motor_vel_target[2];

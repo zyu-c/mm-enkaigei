@@ -31,6 +31,9 @@ void Mouse::control() {
 
     machine_vel = (motor_vel[0] + motor_vel[1]) / 2.0;
 
+    pid_ang.update(machine_theta_target, yaw_ang);
+    machine_omega_target = pid_ang.getOutput();
+
     // 逆運動学
     motor_vel_target[0] = machine_vel_target - 18.5 * machine_omega_target;
     motor_vel_target[1] = machine_vel_target + 18.5 * machine_omega_target;
