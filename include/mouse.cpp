@@ -44,6 +44,9 @@ void Mouse::init() {
 
     machine_vel_target = 0.0;
     machine_omega_target = 0.0;
+
+    pid_motor[0].setParam(0.000002, 0.0001, 0.0, 0.8, -0.8, 1000.0);
+    pid_motor[1].setParam(0.000002, 0.0001, 0.0, 0.8, -0.8, 1000.0);
 }
 
 void Mouse::initClock() {
@@ -147,21 +150,11 @@ void Mouse::initVariable() {
     yaw_ang = 0.0;
 
     encoder->update();
-    enc_pos_prev[0] = encoder->getPosition(0);
-    enc_pos_prev[1] = encoder->getPosition(1);
 
     for (int i = 0; i < 2; i++) {
+        enc_pos_prev[i] = encoder->getPosition(i);
         motor_vel[i] = 0.0;
-        output_duty[i] = 0.0;
-        error[i] = 0.0;
-        m[i] = 0.0;
-        error_int[i] = 0.0;
-        error_diff[i] = 0.0;
     }
-
-    kp = 0.000002;
-    ki = 0.0001;
-    kd = 0.0;
 }
 
 void Mouse::calibrateGyro() {

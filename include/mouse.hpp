@@ -8,6 +8,7 @@
 #include "gyro.hpp"
 #include "ioex.hpp"
 #include "motor.hpp"
+#include "pid_speed_controller.hpp"
 #include "sensor.hpp"
 
 extern "C" {
@@ -25,6 +26,8 @@ class Mouse {
 
     void initVariable();
 
+    PidSpeedController pid_motor[2];
+
    public:
     float yaw_ang_zero;
     float yaw_ang;
@@ -35,12 +38,6 @@ class Mouse {
     float machine_vel_target;
     float machine_omega_target;
     float motor_vel_target[2];
-    float output_duty[2];
-    float kp, ki, kd;
-    float error[2];
-    float m[2];
-    float error_int[2];
-    float error_diff[2];
 
     Buzzer* buzzer;
     Encoder* encoder;
